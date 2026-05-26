@@ -1,0 +1,528 @@
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Крым | Недвижимость у моря</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f0f4f0 0%, #e2e8e0 100%);
+            color: #1a2a2f;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 40px 0 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e5a6f, #2c7a5e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #2c3e42;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .hero-form {
+            flex: 1;
+            min-width: 320px;
+            background: white;
+            padding: 32px 28px;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+        }
+
+        .hero-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #1e5a6f;
+        }
+
+        .hero-form .sub {
+            color: #5a6e7c;
+            margin-bottom: 24px;
+            border-left: 3px solid #2c7a5e;
+            padding-left: 12px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            border: 1px solid #cfdfed;
+            border-radius: 28px;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #fefefe;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2c7a5e;
+            box-shadow: 0 0 0 3px rgba(44,122,94,0.1);
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #1e5a6f, #2c7a5e);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+
+        .privacy {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 16px;
+            color: #6c7f8f;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin: 50px 0 30px;
+            font-weight: 700;
+            color: #1e5a6f;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+        }
+
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .photo-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .place-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e5a6f;
+            margin-bottom: 8px;
+        }
+
+        .place-description {
+            font-size: 0.9rem;
+            color: #4b5e6c;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .cta-small {
+            background: #eef2f7;
+            color: #1e5a6f;
+            text-align: center;
+            padding: 10px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+
+        .cta-small:hover {
+            background: #1e5a6f;
+            color: white;
+        }
+
+        .calculator {
+            background: linear-gradient(135deg, #1e5a6f, #2c7a5e);
+            border-radius: 32px;
+            padding: 40px;
+            margin: 50px 0;
+            color: white;
+        }
+
+        .calculator h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .calc-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .calc-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .calc-input input {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .calc-input input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .calc-result {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 24px;
+            font-size: 1.2rem;
+        }
+
+        .calc-result span {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #6c7f8f;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 750px) {
+            .hero-text h1 { font-size: 2rem; }
+            .hero { padding: 20px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Крым. Резиденции у моря<br>и инвестиции с доходностью</h1>
+            <p>Ялта, Алушта, Феодосия, Евпатория. Для тех, кто выбирает приватность, вид на море и надёжный актив.</p>
+            <div class="features">
+                <div class="feature"><span>🏝️</span> Резиденции у моря</div>
+                <div class="feature"><span>📈</span> Окупаемость от 4 лет</div>
+                <div class="feature"><span>🏦</span> Ипотека 6%</div>
+                <div class="feature"><span>📋</span> Полное сопровождение</div>
+            </div>
+        </div>
+        <div class="hero-form">
+            <h3>🎥 Запись на видеопоказ</h3>
+            <div class="sub">Покажем объект онлайн. Вы — в любой точке мира</div>
+            <form id="leadForm">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+                <select id="purpose">
+                    <option value="">Цель</option>
+                    <option value="invest">Инвестиции (доходность + окупаемость)</option>
+                    <option value="residence">Личная резиденция для отдыха</option>
+                </select>
+                <select id="location">
+                    <option value="">Локация</option>
+                    <option value="yalta">Ялта</option>
+                    <option value="alusta">Алушта</option>
+                    <option value="feodosia">Феодосия</option>
+                    <option value="evpatoria">Евпатория</option>
+                </select>
+                <button type="submit">Записаться на видеопоказ →</button>
+                <div class="privacy">Нажимая на кнопку, вы соглашаетесь с обработкой данных</div>
+            </form>
+            <div id="formStatus" style="margin-top: 12px; font-size:0.85rem; text-align:center;"></div>
+        </div>
+    </div>
+
+    <div class="section-title">🏛️ Достопримечательности Крыма — атмосфера и вдохновение</div>
+    <div class="cards">
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/swallows-nest-crimea.jpg');">
+                <div class="photo-badge">📸 Ласточкино гнездо</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Ласточкино гнездо</div>
+                <div class="place-description">Гаспра, Ялта. Символ Крыма, замок на скале высотой 40 метров.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/ayu-dag.jpg');">
+                <div class="photo-badge">📸 Гора Аю-Даг</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Аю-Даг (Медведь-гора)</div>
+                <div class="place-description">Между Алуштой и Ялтой. Легендарная гора, видовой маяк.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/gen-sudak.jpg');">
+                <div class="photo-badge">📸 Генуэзская крепость</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Генуэзская крепость</div>
+                <div class="place-description">Судак, XIV век. Древняя крепость на берегу моря.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/dvorec_dyulber_v_krymu_3.jpg');">
+                <div class="photo-badge">📸 Дворец Дюльбер</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Дворец Дюльбер</div>
+                <div class="place-description">Кореиз, Ялта. Мавританский стиль, уникальная архитектура.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/vulkan-karadag-7.jpg');">
+                <div class="photo-badge">📸 Кара-Даг</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Кара-Даг</div>
+                <div class="place-description">Феодосия. Древний вулкан, живописные скалы и бухты.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+        <div class="card" onclick="scrollToForm()">
+            <div class="card-img" style="background-image: url('images/naberezhnaya-imeni-gorkogo.jpg');">
+                <div class="photo-badge">📸 Набережная Евпатории</div>
+            </div>
+            <div class="card-content">
+                <div class="place-title">Набережная Горького</div>
+                <div class="place-description">Евпатория. Курортная классика, мелкое море, песчаные пляжи.</div>
+                <div class="cta-small">🏡 Хочу резиденцию рядом</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="calculator">
+        <h3>💰 Калькулятор окупаемости</h3>
+        <div class="calc-row">
+            <div class="calc-input">
+                <label>Стоимость объекта (₽)</label>
+                <input type="number" id="calcPrice" placeholder="8 000 000" value="8000000">
+            </div>
+            <div class="calc-input">
+                <label>Ожидаемый доход в месяц (₽)</label>
+                <input type="number" id="calcIncome" placeholder="140 000" value="140000">
+            </div>
+        </div>
+        <div class="calc-result" id="calcResult">
+            📊 Ориентировочная окупаемость: <span>4.8 года</span><br>
+            Годовая доходность: <strong>~21%</strong>
+        </div>
+    </div>
+
+    <div class="section-title">Почему Крым</div>
+    <div class="features" style="justify-content: center; gap: 30px;">
+        <div class="feature"><span>🌊</span> Море 8 месяцев в году</div>
+        <div class="feature"><span>📈</span> Рост цены +18% в год</div>
+        <div class="feature"><span>🏦</span> Ипотека 6%</div>
+        <div class="feature"><span>🛂</span> Юридическая чистота</div>
+    </div>
+</div>
+
+<footer>
+    <p>Недвижимость Крыма | Резиденции и инвестиции</p>
+    <p>Ялта · Алушта · Феодосия · Евпатория</p>
+    <p style="margin-top: 10px;">© 2026 | Политика конфиденциальности</p>
+</footer>
+
+<script>
+    // ==================== НАСТРОЙКИ ====================
+    // 👇 ВСТАВЬТЕ ВАШИ РЕАЛЬНЫЕ ДАННЫЕ:
+    const TELEGRAM_BOT_TOKEN = "8804585921:AAHehzqQtlBsEdSx0ZFxoC2JocvsKnMrcT4";      // токен от @BotFather
+    const TELEGRAM_CHAT_ID = "880021244";          // число от @userinfobot
+    const USE_TELEGRAM = true;
+    // ===================================================
+
+    function scrollToForm() {
+        document.querySelector('.hero-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateCalculator() {
+        const price = parseFloat(document.getElementById('calcPrice').value);
+        const income = parseFloat(document.getElementById('calcIncome').value);
+        if (price && income && income > 0) {
+            const years = (price / (income * 12)).toFixed(1);
+            const yieldPercent = ((income * 12) / price * 100).toFixed(1);
+            document.getElementById('calcResult').innerHTML = `📊 Ориентировочная окупаемость: <span>${years} года</span><br>Годовая доходность: <strong>~${yieldPercent}%</strong>`;
+        } else {
+            document.getElementById('calcResult').innerHTML = `📊 Введите стоимость и доход для расчёта`;
+        }
+    }
+
+    document.getElementById('calcPrice').addEventListener('input', updateCalculator);
+    document.getElementById('calcIncome').addEventListener('input', updateCalculator);
+    updateCalculator();
+
+    document.getElementById('leadForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const purpose = document.getElementById('purpose').options[document.getElementById('purpose').selectedIndex]?.text || 'не указана';
+        const location = document.getElementById('location').options[document.getElementById('location').selectedIndex]?.text || 'не указана';
+        const statusDiv = document.getElementById('formStatus');
+        
+        if (!name || !phone) {
+            statusDiv.style.color = "#c0392b";
+            statusDiv.innerText = "❌ Заполните имя и телефон";
+            return;
+        }
+        
+        statusDiv.innerHTML = "⏳ Отправка...";
+        statusDiv.style.color = "#1e5a6f";
+        
+        // Сообщение для риелтора
+        const message = `🏛️ *НОВАЯ ЗАЯВКА С САЙТА КРЫМ*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🎯 Цель: ${purpose}\n📍 Локация: ${location}\n🕒 Время: ${new Date().toLocaleString()}`;
+        
+        let sent = false;
+        
+        // Отправка в Telegram
+        if (USE_TELEGRAM && TELEGRAM_BOT_TOKEN !== "ВАШ_ТОКЕН_БОТА" && TELEGRAM_CHAT_ID !== "ВАШ_CHAT_ID") {
+            try {
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                const data = await response.json();
+                if (data.ok) {
+                    sent = true;
+                    console.log("✅ Telegram: отправлено успешно");
+                } else {
+                    console.error("❌ Telegram ошибка:", data);
+                    statusDiv.innerHTML = "❌ Ошибка Telegram: " + (data.description || "неизвестная");
+                    return;
+                }
+            } catch (err) {
+                console.error("❌ Ошибка соединения:", err);
+                statusDiv.innerHTML = "❌ Ошибка соединения с Telegram";
+                return;
+            }
+        } else {
+            console.warn("⚠️ Telegram не настроен (USE_TELEGRAM=false или данные не заменены)");
+        }
+        
+        if (sent) {
+            statusDiv.innerHTML = "✅ Заявка принята! Свяжусь в течение 15 минут.";
+            statusDiv.style.color = "#2c6e2c";
+        } else {
+            // Резервное сохранение в localStorage
+            let leads = JSON.parse(localStorage.getItem("demo_leads") || "[]");
+            leads.push({ name, phone, purpose, location, time: new Date().toISOString() });
+            localStorage.setItem("demo_leads", JSON.stringify(leads));
+            statusDiv.innerHTML = "✅ Заявка сохранена локально. Свяжусь с вами!";
+            statusDiv.style.color = "#2c6e2c";
+        }
+        
+        document.getElementById('leadForm').reset();
+        
+        setTimeout(() => {
+            statusDiv.innerHTML = "";
+        }, 5000);
+    });
+</script>
+</body>
+</html>
