@@ -175,19 +175,6 @@
             position: relative;
         }
 
-        .photo-badge {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            color: white;
-            font-size: 0.7rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
         .card-content {
             padding: 20px;
         }
@@ -329,7 +316,7 @@
     <div class="section-title">🏛️ Достопримечательности Крыма — атмосфера и вдохновение</div>
     <div class="cards">
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/swallows-nest-crimea.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #5a7f8a, #2c5a6f);">
                 <div class="photo-badge">📸 Ласточкино гнездо</div>
             </div>
             <div class="card-content">
@@ -339,7 +326,7 @@
             </div>
         </div>
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/ayu-dag.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #8ab89a, #4a7a62);">
                 <div class="photo-badge">📸 Гора Аю-Даг</div>
             </div>
             <div class="card-content">
@@ -349,7 +336,7 @@
             </div>
         </div>
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/gen-sudak.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #b8a06e, #8e6e48);">
                 <div class="photo-badge">📸 Генуэзская крепость</div>
             </div>
             <div class="card-content">
@@ -359,7 +346,7 @@
             </div>
         </div>
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/dvorec_dyulber_v_krymu_3.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #c2a575, #9e7a4a);">
                 <div class="photo-badge">📸 Дворец Дюльбер</div>
             </div>
             <div class="card-content">
@@ -369,7 +356,7 @@
             </div>
         </div>
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/vulkan-karadag-7.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #6f9eab, #4e7b8a);">
                 <div class="photo-badge">📸 Кара-Даг</div>
             </div>
             <div class="card-content">
@@ -379,7 +366,7 @@
             </div>
         </div>
         <div class="card" onclick="scrollToForm()">
-            <div class="card-img" style="background-image: url('images/naberezhnaya-imeni-gorkogo.jpg');">
+            <div class="card-img" style="background: linear-gradient(145deg, #e6be8a, #c99f60);">
                 <div class="photo-badge">📸 Набережная Евпатории</div>
             </div>
             <div class="card-content">
@@ -425,9 +412,10 @@
 
 <script>
     // ==================== НАСТРОЙКИ ====================
-    // 👇 ВСТАВЬТЕ ВАШИ РЕАЛЬНЫЕ ДАННЫЕ:
-    const TELEGRAM_BOT_TOKEN = "8804585921:AAHehzqQtlBsEdSx0ZFxoC2JocvsKnMrcT4";      // токен от @BotFather
-    const TELEGRAM_CHAT_ID = "880021244";          // число от @userinfobot
+    // ВНИМАНИЕ: Старый токен скомпрометирован! Отзовите его через @BotFather.
+    // Создайте новый токен и вставьте его сюда.
+    const TELEGRAM_BOT_TOKEN = "8804585921:AAHboA0XxJIwlwXosdlddzBeKpR6HRY7VHU";   // замените на новый токен от @BotFather
+    const TELEGRAM_CHAT_ID = "880021244";        // замените на ваш реальный Chat ID (от @userinfobot)
     const USE_TELEGRAM = true;
     // ===================================================
 
@@ -469,13 +457,11 @@
         statusDiv.innerHTML = "⏳ Отправка...";
         statusDiv.style.color = "#1e5a6f";
         
-        // Сообщение для риелтора
         const message = `🏛️ *НОВАЯ ЗАЯВКА С САЙТА КРЫМ*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🎯 Цель: ${purpose}\n📍 Локация: ${location}\n🕒 Время: ${new Date().toLocaleString()}`;
         
         let sent = false;
         
-        // Отправка в Telegram
-        if (USE_TELEGRAM && TELEGRAM_BOT_TOKEN !== "ВАШ_ТОКЕН_БОТА" && TELEGRAM_CHAT_ID !== "ВАШ_CHAT_ID") {
+        if (USE_TELEGRAM && TELEGRAM_BOT_TOKEN !== "ВАШ_НОВЫЙ_ТОКЕН" && TELEGRAM_CHAT_ID !== "ВАШ_CHAT_ID") {
             try {
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
                 const response = await fetch(url, {
@@ -502,14 +488,13 @@
                 return;
             }
         } else {
-            console.warn("⚠️ Telegram не настроен (USE_TELEGRAM=false или данные не заменены)");
+            console.warn("⚠️ Telegram не настроен: замените ВАШ_НОВЫЙ_ТОКЕН и ВАШ_CHAT_ID");
         }
         
         if (sent) {
             statusDiv.innerHTML = "✅ Заявка принята! Свяжусь в течение 15 минут.";
             statusDiv.style.color = "#2c6e2c";
         } else {
-            // Резервное сохранение в localStorage
             let leads = JSON.parse(localStorage.getItem("demo_leads") || "[]");
             leads.push({ name, phone, purpose, location, time: new Date().toISOString() });
             localStorage.setItem("demo_leads", JSON.stringify(leads));
